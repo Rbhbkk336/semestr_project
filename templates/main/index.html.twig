@@ -1,0 +1,193 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Content House {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<header class="header" id="header">
+    <nav class="header__navbar">
+        <div class="header__navbar-left">
+            <ul class="header__list">
+                <li class="header__list-item">Авторы</li>
+                <li class="header__list-item">Возможности</li>
+                <li class="header__list-item">Финансы</li>
+                <li class="header__list-item">Поддержка</li>
+            </ul>
+        </div>
+        <div class="title">
+            <h1>CreatorHub</h1>
+        </div>
+        <div class="header__navbar-right">
+            <div class="button">
+                <div class="button__content">
+                    <div class="svg">
+                        <img src="{{ asset('assets/svg/search_svg.svg') }}" alt="search">
+                    </div>
+                    <label>
+                        <input type="text" class="search-input" placeholder="Найти автора">
+                    </label>
+                </div>
+            </div>
+            <button class="button__content button login-button" onclick="window.location.href='{{ path('app_login') }}'">
+                Войти
+            </button>
+            <button class="registration-button button button__content" onclick="window.location.href='{{ path('app_registration') }}'">
+                Стать автором
+            </button>
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="section section-hero">
+        <div class="container">
+            <div class="hero-block">
+                <div class="hero-block-top">
+                    <div class="hero-block-top-content">
+                        <h1 class="main-title">Твой талант стоит денег</h1>
+                        <p class="main-subtitle">Лучший способ заработка и общения с аудиторией для авторов контента</p>
+                    </div>
+                </div>
+                <div class="hero-block-bottom">
+                    <img src="{{ asset('assets/svg/signature.svg') }}" alt="signature" class="hero-signature">
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section section-blue">
+        <div class="container">
+            <h2 class="section-title">Как это работает?</h2>
+            <div class="step-container">
+                <div class="step-block">
+                    <div class="step-left">
+                        <div class="rounded-rectangle">
+                            <div class="rounded-rectangle-content">
+                                <p class="rounded-rectangle-title">Зритель</p>
+                                <p class="rounded-rectangle-price">400 ₽ в месяц</p>
+                                <p class="rounded-rectangle-description">Вы получите доступ ко всем вышедшим публикациям и сможете смотреть новые, сразу после их выхода.</p>
+                                <button class="rounded-rectangle-button">Подписаться</button>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/svg/template_web.svg') }}" alt="image" class="step-svg">
+                    </div>
+                    <div class="step-right">
+                        <p class="step-text-title">Шаг 1</p>
+                        <p class="step-text-description">Настройте свою страницу и уровни подписки.</p>
+                        <p class="step-text">Зарегистрируйтесь и настройте вашу страницу на CreatorHub. Продумайте уровни подписки, от самого минимального до привилегированного. Каждый уровень предлагает особые условия и преимущества вашим фанатам. Подумайте, что вы реально сможете давать регулярно и чему будут рады ваши фанаты. Не усложняйте!</p>
+                    </div>
+                </div>
+                <div class="step-block">
+                    <div class="step-left">
+                        <p class="step-text-title">Шаг 2</p>
+                        <p class="step-text-description">Расскажите своим подписчикам, что вы теперь есть на CreatorHub.</p>
+                        <p class="step-text"> Сделайте посты во всех ваших основных соц.сетях, чтобы оповестить всех ваших подписчиков. CreatorHub - это место, где рождаются особые отношения между вами и вашими самыми активными фанатами - теми, кто хочет чего-то большего, чем просто следить за вами в социальных сетях.</p>
+                    </div>
+                    <div class="step-right">
+                        <div class="avatar-container">
+                            <img src="{{ asset('assets/image/avatar1.png') }}" alt="Avatar 1" class="avatar">
+                            <div class="white-rectangle">
+                                <p class="avatar-name">Анна Иванова <span class="avatar-username">@AnnaBlog</span></p>
+                                <p class="avatar-message">Всем привет! Теперь вы можете поддерживать меня на CreatorHub.</p>
+                                <div class="like-container">
+                                    <img src="{{ asset('assets/svg/like.svg') }}" alt="Like" class="like-icon">
+                                    <span class="like-count">278</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avatar-container">
+                            <img src="{{ asset('assets/image/avatar2.png') }}" alt="Avatar 2" class="avatar">
+                            <div class="white-rectangle">
+                                <p class="avatar-name">Влад Фёдоров</p>
+                                <p class="avatar-message">С радостью поддержу тебя!</p>
+                            </div>
+                        </div>
+                        <div class="avatar-container">
+                            <img src="{{ asset('assets/image/avatar3.png') }}" alt="Avatar 3" class="avatar">
+                            <div class="white-rectangle">
+                                <p class="avatar-name">Анастасия Строганова</p>
+                                <p class="avatar-message">Круто! Будут ли бонусы для подписчиков?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-block">
+                    <div class="step-left">
+                        <img src="{{ asset('assets/svg/step3.svg') }}" alt="Step 3" class="step-svg">
+                    </div>
+                    <div class="step-right">
+                        <p class="step-text-title">Шаг 3</p>
+                        <p class="step-text-description">Растите и развивайтесь.</p>
+                        <p class="step-text"> CreatorHub - это не только платформа для монетизации, но и место для роста. Анализируйте статистику, узнавайте больше о своих подписчиках, экспериментируйте с новыми форматами контента. Чем больше вы будете развиваться, тем успешнее будет ваш проект.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-music">
+        <div class="container">
+            <div class="music-content">
+                <div class="music-content-box">
+                    <p class="music-text">CreatorHub предоставляет художникам пространство, где они могут поддерживать себя, напрямую связывая их с их собственными сообществами.</p>
+                    <p class="music-signature">- KAMAUU</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-light-blue">
+        <div class="container">
+            <h2 class="section-title">Превратите хобби в заработок</h2>
+            <div class="light-container">
+                <div class="light-left">
+                    <img src="{{ asset('assets/image/mobile_earn.png') }}" alt="image" class="mobile-earn-image">
+                </div>
+                <div class="light-right">
+                    <div class="light-text-block-top">
+                        <div class="text-block-left">
+                            <p class="light-title">Больше способов заработка</p>
+                            <p class="light-text-description">На CreatorHub вы можете построить долгосрочный бизнес за пределами экосистемы, основанной на рекламе, с потоками доходов, варьирующимися от членства для предложения постоянных преимуществ до интернет-магазинов для продажи отдельных видео, эпизодов подкастов и многого другого.</p>
+                        </div>
+                        <div class="text-block-right">
+                            <p class="light-title">Раскройте потенциал роста</p>
+                            <p class="light-text-description">CreatorHub предназначен не только для творческого, но и для профессионального роста. Получайте подробную аналитику о своих поклонниках, изучайте мощные инструменты управления отношениями и подключайтесь к растущему сообществу авторов. </p>
+                        </div>
+                    </div>
+                    <div class="light-text-block-bottom">
+                        <div class="light-text-block-bottom-container">
+                            <p class="light-title">Предоставляйте преимущества для ваших подписчиков</p>
+                            <p class="light-text-description">Ранний доступ к контенту<br>
+                                Влияние на будущий контент<br>
+                                Эксклюзивный контент<br>
+                                Участие в закрытой группе или секретном чате<br>
+                                Невошедшее<br>
+                                Все, что понравится вашим подписчикам</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section section-lady">
+        <div class="container">
+            <div class="white-box">
+                <img src="{{ asset('assets/image/logo.png') }}" alt="Logo" class="logo">
+                <p class="creative-text">Ваш мир для<br>творчества</p>
+                <button class="start-button" onclick="window.location.href='registration.html'">Начало работы</button>
+                <p class="login-text">У вас уже есть учетная запись? <a href="signin.html" class="login-link">Войти</a></p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="footer-text">Все права защищены. Все товарные знаки являются собственностью их соответствующих владельцев.</p>
+    </footer>
+</main>
+{% endblock %}
+

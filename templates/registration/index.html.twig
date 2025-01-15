@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/registration.css') }}">
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="left">
+                    <div class="left-container">
+                        <div class="left-text">
+                            <div class="left-text-title">Станьте автором на CreatorHub</div>
+                            <div class="left-text-description">Присоединитесь к большому сообществу авторов, создающих фандомы, зарабатывающих на подписках и продающих цифровые продукты.</div>
+                        </div>
+                        <form action="/registration" method="post">
+                            <div class="input-field">
+                                <label>
+                                    <input type="email" name="email" placeholder="Эл. почта" class="input">
+                                </label>
+                            </div>
+                            <div class="input-field">
+                                <label>
+                                    <input type="password" name="password" placeholder="Пароль" class="input">
+                                </label>
+                            </div>
+                            <div class="input-field">
+                                <label>
+                                    <input type="text" name="name" placeholder="Ваше имя автора" class="input">
+                                </label>
+                            </div>
+                            <div class="input-field">
+                                <button class="button" type="submit">
+                                    Продолжить
+                                </button>
+                            </div>
+                        </form>
+                        <div class="left-text-help">Нужная помощь со входом?</div>
+                        <div class="left-space">
+                            <div class="left-text">
+                                <div class="left-text-description">
+                                    Зарегистрировавшись, вы создаете аккаунт CreatorHub и принимаете<br>
+                                    Условия использования и<br>
+                                    Политику конфиденциальности CreatorHub
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button class="button-link-sign" onclick="window.location.href='{{ path('app_login') }}'">
+                                Вы не автор? Присоединиться в качестве поклонника
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="right-content">
+                        <img src="{{ asset('assets/image/right_img1.png') }}" alt="img" class="right-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

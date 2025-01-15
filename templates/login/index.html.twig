@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="main">
+                    <div class="logo-container">
+                        <img src="{{ asset('assets/image/logo.png') }}" alt="logo" class="logo">
+                    </div>
+                    <p class="main-title">Войдите или зарегистрируйтесь</p>
+                    <form action="{{ path('app_login') }}" method="post">
+                        <div class="input-field">
+                            <p class="input-text">Введите email</p>
+                            <label>
+                                <input type="email"  value="{{ email }}" name="_username" placeholder="Введите email" class="input" id="username">
+                            </label>
+                        </div>
+                        <div class="input-field">
+                            <p class="input-text">Введите пароль</p>
+                            <label>
+                                <input type="password" name="_password" placeholder="Введите пароль" class="input">
+                            </label>
+                        </div>
+                        <button type="submit" class="button">
+                            Войти
+                        </button>
+                    </form>
+                    <p class="registration-text">или <a class="link" href="{{ path('app_registration') }}">зарегистрируйтесь</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

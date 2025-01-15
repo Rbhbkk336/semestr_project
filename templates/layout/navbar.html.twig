@@ -1,0 +1,66 @@
+<aside class="navbar">
+    <div class="navbar__content">
+        <div class="navbar__logo">
+            <img src="{{ asset('assets/svg/small_logo.svg') }}" alt="logo" class="navbar__img">
+        </div>
+        <div class="navbar__container__list">
+            <div class="navbar__list">
+                <a href="/home">
+                    <div class="navbar__el" id="home">
+                        <div class="navbar__icon">
+                            <img src="{{ asset('assets/svg/homeIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__text">Главная</div>
+                    </div>
+                </a>
+                <a href="/search">
+                    <div class="navbar__el" id="search">
+                        <div class="navbar__icon">
+                            <img src="{{ asset('assets/svg/searchIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__text">Найти автора</div>
+                    </div>
+                </a>
+                <a href="/notifications">
+                    <div class="navbar__el" id="notifications">
+                        <div class="navbar__icon">
+                            <img src="{{ asset('assets/svg/ringIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__text">Уведомления</div>
+                    </div>
+                </a>
+                <a href="/settings">
+                    <div class="navbar__el" id="settings">
+                        <div class="navbar__icon">
+                            <img src="{{ asset('assets/svg/settingsIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__text">Настройки</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="navbar__subscription">
+            <div class="navbar__text sub__text">Подписки</div>
+        </div>
+        <div class="navbar__space"></div>
+        <div class="navbar__profile">
+            <div class="navbar__profile__container">
+                <div class="navbar__card">
+                    <div class="navbar__avatar">
+                        {% if app.user.profilePhoto %}
+                        <img src="{{ asset('uploads/users/avatar/' ~ app.user.profilePhoto) }}" alt="profile_photo" class="navbar__avatar__img">
+                        {% else %}
+                        {{ app.user.name|first|upper }}
+                        {% endif %}
+                    </div>
+                    <div class="navbar__profile__text">
+                        {{ app.user.name }}
+                    </div>
+                </div>
+                <div class="navbar__dots">
+                    <img src="{{ asset('assets/svg/three_dots.svg') }}" alt="dots" >
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

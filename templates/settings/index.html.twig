@@ -1,0 +1,201 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        {% include 'layout/navbar.html.twig' %}
+        <div class="content">
+            <div class="settings__content">
+                <div class="container">
+                    <div class="title-of-page">Настройки</div>
+                    <div class="settings__list">
+                        <div class="settings__list__el" id="profile">Профиль</div>
+                        <div class="settings__list__el" id="private">Приватность</div>
+                        <div class="settings__list__el" id="social_nets">Мои соцсети</div>
+                        <div class="settings__list__el" id="my_subscription">Мои подписки</div>
+                        <div class="settings__list__el" id="subscription_levels">Уровни подписки</div>
+                        <div class="settings__list__el" id="black_list">Черный список</div>
+                    </div>
+                    <div class="settings__profile settings__content-block">
+                        <div class="settings__profile__container">
+                            <div class="profile__photo">
+                                <div class="profile__photo__text">Фотография профиля</div>
+                                <div class="profile__photo__container">
+                                    <div class="profile__photo__img">
+                                        {% if app.user.profilePhoto %}
+                                            <img src="{{ asset('uploads/users/avatar/' ~ app.user.profilePhoto) }}" alt="profile_photo" class="profile__photo__img__file">
+                                        {% else %}
+                                            <img src="{{ asset('assets/image/anonimProfile.png') }}" alt="profile_photo" class="profile__photo__img__file">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile__upload-img">
+                                <form action="{{ path('app_user_setUserPhoto') }}" method="post" enctype="multipart/form-data">
+                                    <input class="profile__photo__btn" type="file" name="photo" accept="image/*" required>
+                                    <button type="submit" class="profile__photo__btn">
+                                        Сохранить
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="input-text">Ваше имя аккаунта</div>
+                        </div>
+                    </div>
+
+                    <div class="settings__private settings__content-block">
+                        <div class="private__container">
+                            <div class="private_text">Отправлять мне сообщения могут</div>
+                            <div class="private__list">
+                                <div class="private__list__el">
+                                    <input type="checkbox">
+                                    <div>Все пользователи</div>
+                                </div>
+                            </div>
+
+                            <div class="private__list">
+                                <div class="private__list__el">
+                                    <input type="checkbox">
+                                    <div>Пользователи, на которых я подписан</div>
+                                </div>
+                            </div>
+
+                            <div class="private__list">
+                                <div class="private__list__el">
+                                    <input type="checkbox">
+                                    <div>Только с донатом</div>
+                                </div>
+                            </div>
+
+                            <div class="private__list">
+                                <div class="private__list__el">
+                                    <input type="checkbox">
+                                    <div>Все мои подписчики</div>
+                                </div>
+                            </div>
+
+                            <div class="private__list">
+                                <div class="private__list__el">
+                                    <input type="checkbox">
+                                    <div>Все платные подписчики</div>
+                                </div>
+                            </div>
+
+                            <div class="private__list">
+                                <div class="private__list__el">
+                                    <input type="checkbox">
+                                    <div>Платные подписчики начиная с выбранного уровня</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="settings__social_nets settings__content-block">
+                        <div class="settings__social__container">
+                            <div class="social__list">
+                                <form action="{{ path('app_user_setSocialMedia') }}" method="POST">
+                                    <div class="social__el">
+                                        <div class="social__el__icon">
+                                            <div class="social__el__icon__container">
+                                                <img src="{{ asset('assets/svg/social-vk-grey(1).svg') }}" alt="vk" class="social__el__icon__svg">
+                                            </div>
+                                        </div>
+                                        <div class="social__el__text">
+                                            <input type="text" alt="" placeholder="Ссылка на аккаунт Vkontakte" class="social__el__input" name="vk">
+                                        </div>
+                                    </div>
+
+                                    <div class="social__el">
+                                        <div class="social__el__icon">
+                                            <div class="social__el__icon__container">
+                                                <img src="{{ asset('assets/svg/social-tg.svg') }}" alt="telegram" class="social__el__icon__svg">
+                                            </div>
+                                        </div>
+                                        <div class="social__el__text">
+                                            <input type="text" alt="" placeholder="Ссылка на аккаунт Telegram" class="social__el__input" name="tg">
+                                        </div>
+                                    </div>
+
+                                    <div class="social__el">
+                                        <div class="social__el__icon">
+                                            <div class="social__el__icon__container">
+                                                <img src="{{ asset('assets/svg/social-instagram.svg') }}" alt="instagram" class="social__el__icon__svg">
+                                            </div>
+                                        </div>
+                                        <div class="social__el__text">
+                                            <input type="text" alt="" placeholder="Ссылка на аккаунт Instagram" class="social__el__input" name="inst">
+                                        </div>
+                                    </div>
+
+                                    <div class="social__el">
+                                        <div class="social__el__icon">
+                                            <div class="social__el__icon__container">
+                                                <img src="{{ asset('assets/svg/social-tik-tok.svg') }}" alt="tik tok" class="social__el__icon__svg">
+                                            </div>
+                                        </div>
+                                        <div class="social__el__text">
+                                            <input type="text" alt="" placeholder="Ссылка на аккаунт Tik Tok" class="social__el__input" name="tik-tok">
+                                        </div>
+                                    </div>
+
+                                    <div class="social__el">
+                                        <div class="social__el__icon">
+                                            <div class="social__el__icon__container">
+                                                <img src="{{ asset('assets/svg/social-youtube.svg') }}" alt="youtube" class="social__el__icon__svg">
+                                            </div>
+                                        </div>
+                                        <div class="social__el__text">
+                                            <input type="text" alt="" placeholder="Ссылка на аккаунт Youtube" class="social__el__input" name="youtube">
+                                        </div>
+                                    </div>
+
+                                    <div class="social__el">
+                                        <div class="social__el__icon">
+                                            <div class="social__el__icon__container">
+                                                <img src="{{ asset('assets/svg/social-ok.svg') }}" alt="ok" class="social__el__icon__svg">
+                                            </div>
+                                        </div>
+                                        <div class="social__el__text">
+                                            <input type="text" alt="" placeholder="Ссылка на аккаунт OK" class="social__el__input" name="ok">
+                                        </div>
+                                    </div>
+
+                                    <div class="social__el">
+                                        <div class="social__el__icon">
+                                            <div class="social__el__icon__container">
+                                                <img src="{{ asset('assets/svg/social-twitch.svg') }}" alt="ok" class="social__el__icon__svg">
+                                            </div>
+                                        </div>
+                                        <div class="social__el__text">
+                                            <input type="text" alt="" placeholder="Ссылка на аккаунт Twitch" class="social__el__input" name="twitch">
+                                        </div>
+                                    </div>
+                                    <div class="social__container">
+                                        <button type="submit" name="social-btn" class="social__btn" id="social-btn">
+                                            Сохранить
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings__my_subscription settings__content-block"></div>
+                    <div class="settings__subscription_levels settings__content-block"></div>
+                    <div class="settings__black_list settings__content-block"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/navbar.js') }}"></script>
+        <script src="{{ asset('assets/js/settings.js') }}"></script>
+    {% endblock %}
+{% endblock %}

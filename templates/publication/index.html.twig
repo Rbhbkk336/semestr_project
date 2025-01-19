@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Publications{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/publication.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="form-container">
+        <h2>Публикация поста</h2>
+        <form action="/submit-post" method="post" enctype="multipart/form-data" id="postForm">
+            <label for="title">Заголовок:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="image">Загрузите картинку:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <input type="submit" value="Опубликовать">
+        </form>
+
+        <div class="preview" id="preview">
+            <h3>Предварительный просмотр поста:</h3>
+            <div class="preview__block">
+                <p class="preview__title" id="preview-title">Заголовок поста</p>
+            </div>
+            
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/publication.js') }}"></script>
+    {% endblock %}
+{% endblock %}

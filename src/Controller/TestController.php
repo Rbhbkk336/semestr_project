@@ -25,4 +25,14 @@ class TestController extends AbstractController
     {
         return $this->render('search/index.html.twig');
     }
+    #[Route('/my-page', name: 'app_my_page', methods: 'GET')]
+    public function getMyPage(): Response
+    {
+        return $this->render('my-page/index.html.twig');
+    }
+    #[Route('/publication', name: 'app_publication', methods: 'GET')]
+    public function getPublicationPage(): Response
+    {
+        return $this->render('publication/index.html.twig');
+    }
 }

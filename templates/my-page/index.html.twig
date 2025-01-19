@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My page{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/my-page.css') }}">
+{% endblock %}
+
+{% block body %}
+     <aside class="navbar">
+        <div class="navbar__inner">
+            <div class="navbar__logo">
+                <img src="{{ asset('assets/svg/small_logo.svg') }}" alt="logo" class="navbar__img">
+            </div>
+            <ul class="navbar__list">
+                <li class="navbar__list-item">
+                    <a href="/my-page" class="navbar__link navbar__link--active" id="my-page">
+                        <div class="navbar__link-icon">
+                            <img src="{{ asset('assets/svg/homeIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__link-text">Моя страница</div>
+                    </a>
+                </li>
+                <li class="navbar__list-item">
+                    <a href="/home" class="navbar__link" id="home">
+                        <div class="navbar__link-icon">
+                            <img src="{{ asset('assets/svg/homeIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__link-text">Главная</div>
+                    </a>
+                </li>
+                <li class="navbar__list-item">
+                    <a href="/search" class="navbar__link" id="search">
+                        <div class="navbar__link-icon">
+                            <img src="{{ asset('assets/svg/searchIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__link-text">Найти автора</div>
+                    </a>
+                </li>
+                <li class="navbar__list-item">
+                    <a href="/notifications" class="navbar__link" id="notifications">
+                        <div class="navbar__link-icon">
+                            <img src="{{ asset('assets/svg/ringIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__link-text">Уведомления</div>
+                    </a>
+                </li>
+                <li class="navbar__list-item">
+                    <a href="/settings" class="navbar__link" id="settings">
+                        <div class="navbar__link-icon">
+                            <img src="{{ asset('assets/svg/settingsIcon.svg') }}" alt="icon_home">
+                        </div>
+                        <div class="navbar__link-text">Настройки</div>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="navbar__subscription">
+                <span class="">Подписки</span>
+            </div>
+
+            <div class="navbar__profile">
+                <div class="navbar__profile-avatar">
+                    <img src="./uploads/users/avatar/6787d9b95daed.jpg" alt="profile_photo" class="">
+                </div>
+                <h3 class="navbar__profile-name">Amedai</h3>
+                <div class="navbar__profile-dots">
+                    <img src="{{ asset('assets/svg/three_dots.svg') }}" alt="dots" >
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main class="main">
+        <div class="general">
+            <div class="general__bg-img" style="background-image:url('./uploads/users/avatar/6787d9b95daed.jpg')"></div>
+            <div class="general__block">
+                <div class="general__profile-img">
+                    <img src="./uploads/users/avatar/6787d9b95daed.jpg" alt="">
+                </div>
+                <h2 class="general__name">Amedai</h2>
+                <div class="general__count">
+                    <span>0</span> publications
+                </div>
+                <p class="general__recently">Recently publications</p>
+                <a href="/publication" class="general__public-btn">Public post</a>
+
+                <div class="general__publications-block">
+                    <h2 class="general__publications-title"></h2>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/my-page.js') }}"></script>
+    {% endblock %}
+{% endblock %}

@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded',()=>{
-    const generalBlock = document.querySelector('.general__block');
+    const generalBlock = document.querySelector('.general__block'),
+          generalCount = document.querySelector('.general__count span');
 
     async function fetchPublications() {
         try {
@@ -13,7 +14,8 @@ window.addEventListener('DOMContentLoaded',()=>{
             if (data.length === 0) {
                 return;
             }
-
+            
+            generalCount.textContent = data.length;
 
             // Перебираем данные и добавляем их в DOM.ожидаю jSON внтури которого 
             // обьекты с ключами title и imageUrl
@@ -39,5 +41,6 @@ window.addEventListener('DOMContentLoaded',()=>{
         }
     }
 
+    generalCount.textContent = 0;
     fetchPublications();
 })
